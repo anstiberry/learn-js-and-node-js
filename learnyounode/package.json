@@ -1,0 +1,11 @@
+{
+  "name": "learnyounode",
+  "version": "1.0.0",
+  "description": "Learn the basics of node: asynchronous i/o, http. Source: https://github.com/workshopper/learnyounode",
+  "dependencies": {
+    "bl": "^2.0.1",
+    "node-static": "^0.7.10",
+    "strftime": "^0.10.0",
+    "through2-map": "^3.0.0"
+  }
+}
