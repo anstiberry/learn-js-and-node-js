@@ -1,5 +1,6 @@
-
 # Learn Node.JS
+
+My process of learning Node.JS
 
 ### Workshopper learnyounode from NodeSchool
 [Source](https://github.com/workshopper/learnyounode)
