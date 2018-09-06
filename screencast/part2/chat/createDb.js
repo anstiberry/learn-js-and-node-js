@@ -6,7 +6,7 @@ async.series([
     dropDatabase,
     requireModels,
     createUsers
-], function (err, results) {
+], function (err) {
     console.log(arguments);
     mongoose.disconnect();
     process.exit(err ? 255 : 0);

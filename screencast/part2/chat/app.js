@@ -27,7 +27,7 @@ app.use(express.session({
     secret: config.get('session:secret'),
     key: config.get('session:key'),
     cookie: config.get('session:cookie'),
-    store: new MongoStore({mongoose_connection: mongoose.connection})
+    store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
 app.use(function (req, res, next) {
