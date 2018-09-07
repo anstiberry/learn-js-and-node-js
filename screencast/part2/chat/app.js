@@ -30,10 +30,10 @@ app.use(express.session({
     store: new MongoStore({mongooseConnection: mongoose.connection})
 }));
 
-app.use(function (req, res, next) {
-    req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
-    res.end('Visits: ' + req.session.numberOfVisits);
-});
+// app.use(function (req, res, next) {
+//     req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
+//     res.end('Visits: ' + req.session.numberOfVisits);
+// });
 
 app.use(require('middleware/sendHttpError'));
 
@@ -63,18 +63,3 @@ app.use(function (err, req, res, next) {
 http.createServer(app).listen(config.get('port'), function(){
     console.log('Express server listening on port ' + config.get('port'));
 });
-
-
-
-// var routes = require('./routes');
-// var user = require('./routes/user');
-//
-// // all environments
-//
-// // development only
-// if ('development' == app.get('env')) {
-//   app.use(express.errorHandler());
-// }
-//
-// app.get('/', routes.index);
-// app.get('/users', user.list);
