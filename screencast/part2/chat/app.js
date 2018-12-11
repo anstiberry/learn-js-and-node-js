@@ -63,6 +63,15 @@ app.use(function(err, req, res, next) {
   }
 });
 
-http.createServer(app).listen(config.get('port'), function() {
+var server = http.createServer(app);
+server.listen(config.get('port'), function() {
   console.log('Express server listening on port ' + config.get('port'));
+});
+
+var io = require('socket.io').listen(server);
+
+io.sockets.on('connection', function(socket) {
+  socket.on('message', function(text) {
+    socket.broadcast.emit('message', text);
+  });
 });
