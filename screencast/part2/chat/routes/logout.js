@@ -1,4 +1,17 @@
-module.exports.post = function(req, res) {
-  req.session.destroy();
-  res.redirect('/');
+module.exports.post = function(req, res, next) {
+  var sid = req.session.id;
+  var io = req.app.get('io');
+  var connectedSockets = io.of('/').connected;
+
+  req.session.destroy(function(err) {
+    Object.keys(connectedSockets).forEach(function(socketId) {
+      var socket = connectedSockets[socketId];
+      if (socket.handshake.session.id == sid) {
+        socket.emit('session:reload', sid);
+      }
+    });
+
+    if (err) return next(err);
+    res.redirect('/');
+  });
 };

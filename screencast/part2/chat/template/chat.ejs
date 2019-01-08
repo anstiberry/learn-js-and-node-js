@@ -4,7 +4,9 @@
 
 <div id="room">
   <ul class="list-unstyled"></ul>
-  <form><input class="form-control" autocomplete="off" autofocus placeholder="Message..." /></form>
+  <form>
+    <input disabled class="form-control" autocomplete="off" autofocus placeholder="Message..." />
+  </form>
 </div>
 
 <script>
@@ -18,8 +20,14 @@
   );
 
   socket
-    .on('message', function(message) {
-      printMessage(message);
+    .on('message', function(username, message) {
+      printMessage(username + '> ' + message);
+    })
+    .on('leave', function(username) {
+      printStatus(username + ' left the chat');
+    })
+    .on('join', function(username) {
+      printStatus(username + ' joined the chat');
     })
     .on('connect', function() {
       printStatus('connected');
@@ -30,26 +38,32 @@
       printStatus('disconnected');
       form.off('submit', sendMessage);
       input.prop('disabled', true);
-      setTimeout(reconnect, 500);
+      if (message == 'io server disconnect') {
+        return this.emit('error', message);
+      }
+      this.emit('error');
+    })
+    .on('logout', function() {
+      location.href = '/';
+    })
+    .on('error', function(reason) {
+      if (reason == 'handshake unauthorized') {
+        printStatus('You left the chat');
+      } else {
+        setTimeout(function() {
+          socket.socket.connect();
+        }, 500);
+      }
     });
 
   function sendMessage() {
     var text = input.val();
     socket.emit('message', text, function() {
-      if (text) {
-        printMessage(text);
-      }
+      printMessage("i'm> " + text);
     });
 
     input.val('');
     return false;
-  }
-
-  function reconnect() {
-    socket.once('error', function() {
-      setTimeout(reconnect, 500);
-    });
-    socket.socket.connect();
   }
 
   function printMessage(text) {
@@ -61,6 +75,4 @@
       .append($('<i>').text(status))
       .appendTo(ul);
   }
-
-  form.submit(sendMessage());
 </script>

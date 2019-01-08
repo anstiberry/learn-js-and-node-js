@@ -19,23 +19,18 @@ if (app.get('env') === 'development') {
 }
 app.use(express.bodyParser());
 
-app.use(express.cookieParser('your secret here'));
+app.use(express.cookieParser());
 
-var MongoStore = require('connect-mongo')(express);
+var sessionStore = require('libs/sessionStore');
 
 app.use(
   express.session({
     secret: config.get('session:secret'),
     key: config.get('session:key'),
     cookie: config.get('session:cookie'),
-    store: new MongoStore({ mongooseConnection: mongoose.connection }),
+    store: sessionStore,
   }),
 );
-
-// app.use(function (req, res, next) {
-//     req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
-//     res.end('Visits: ' + req.session.numberOfVisits);
-// });
 
 app.use(require('middleware/sendHttpError'));
 app.use(require('middleware/loadUser'));
@@ -68,4 +63,5 @@ server.listen(config.get('port'), function() {
   console.log('Express server listening on port ' + config.get('port'));
 });
 
-require('./socket')(server);
+var io = require('./socket')(server);
+app.set('io', io);
