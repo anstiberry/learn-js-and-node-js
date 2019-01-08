@@ -44,7 +44,7 @@
       this.emit('error');
     })
     .on('logout', function() {
-      location.href = '/';
+      window.location.href = '/';
     })
     .on('error', function(reason) {
       if (reason == 'handshake unauthorized') {

@@ -7,7 +7,8 @@ module.exports.post = function(req, res, next) {
     Object.keys(connectedSockets).forEach(function(socketId) {
       var socket = connectedSockets[socketId];
       if (socket.handshake.session.id == sid) {
-        socket.emit('session:reload', sid);
+        socket.emit('logout');
+        socket.disconnect();
       }
     });
 
