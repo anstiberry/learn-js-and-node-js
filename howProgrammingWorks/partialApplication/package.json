@@ -1,0 +1,14 @@
+{
+  "name": "partial-application",
+  "version": "1.0.0",
+  "description": "https://github.com/HowProgrammingWorks/PartialApplication",
+  "scripts": {
+    "test": "eslint ./exercises; hpw"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.35.0",
+    "hpw": "^0.1.16"
+  }
+}
