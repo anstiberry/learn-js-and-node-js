@@ -1,6 +1,6 @@
-# Learn Node.JS
+# Learn JS and Node.JS
 
-My process of learning Node.JS
+My process of learning JS and Node.JS
 
 ## Workshopper learnyounode from NodeSchool
 

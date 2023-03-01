@@ -1,0 +1,14 @@
+{
+  "name": "higher-order-function",
+  "version": "1.0.0",
+  "description": "https://github.com/HowProgrammingWorks/HigherOrderFunction",
+  "scripts": {
+    "test": "eslint ./exercises; hpw"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.35.0",
+    "hpw": "^0.1.16"
+  }
+}
