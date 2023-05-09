@@ -7,7 +7,7 @@ const extend = (obj, ...objects) => {
   for (const object of objects) {
     const keys = Object.keys(object);
     for (const key of keys) {
-      if (!obj.hasOwnProperty(key)) {
+      if (!(key in obj)) {
         obj[key] = object[key];
       }
     }

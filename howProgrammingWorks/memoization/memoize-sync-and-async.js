@@ -34,7 +34,7 @@ const memoize = (fn) => {
     if (cb) {
       fn(...args, (err, data) => {
         console.log('Save key:', key);
-        cache[key] = {err, data};
+        cache[key] = { err, data };
         cb(err, data);
       });
     } else {

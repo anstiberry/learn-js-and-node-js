@@ -83,7 +83,7 @@ const memoize = (fn) => {
   };
 
   memoized.add = (key, value) => {
-    cache[key] = {value, numberOfCalls: 1};
+    cache[key] = { value, numberOfCalls: 1 };
     emit('add', key, value);
   };
 

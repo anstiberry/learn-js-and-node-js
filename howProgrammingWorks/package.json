@@ -1,0 +1,10 @@
+{
+  "name": "how-programming-works",
+  "version": "1.0.0",
+  "description": "https://github.com/HowProgrammingWorks",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^8.40.0"
+  }
+}

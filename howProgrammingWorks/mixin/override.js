@@ -9,7 +9,7 @@ const extend = (obj, ...mixins) => {
       const keys = Object.keys(mixinObj);
       for (const key of keys) {
         if (key === 'override') continue;
-        if (!obj.hasOwnProperty(key) || override === true) {
+        if (!(key in obj) || override === true) {
           obj[key] = mixinObj[key];
         }
       }

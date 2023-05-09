@@ -1,10 +1,11 @@
 'use strict';
 
-// implement wrap(obj, ...funcs) so if obj contains func.name it should be wrapped
+// implement wrap(obj, ...funcs) so if obj contains func.name
+// it should be wrapped
 
 const wrap = (obj, ...funcs) => {
   for (const func of funcs) {
-    if (obj.hasOwnProperty(func.name)) {
+    if (func.name in obj) {
       obj[func.name] = (...args) => {
         console.log('Start wrapping');
         const result = func.bind(obj)(...args);
