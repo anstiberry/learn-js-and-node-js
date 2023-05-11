@@ -5,10 +5,10 @@ db.connect();
 var User = require('./user');
 
 function run() {
-    var vasya = new User("Вася");
-    var petya = new User("Петя");
+    var karpo = new User("Карпо");
+    var motria = new User("Мотря");
 
-    vasya.hello(petya);
+    karpo.hello(motria);
 
     log(db.getPhrase("Run successful"))
 }

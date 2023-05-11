@@ -14,6 +14,6 @@ server.on('error', function (err) {
 
 });
 
-server.emit('request', {from: 'Ещё Клиент'});
-server.emit('request', {from: 'Клиент'});
+server.emit('request', {from: 'Client'});
+server.emit('request', {from: 'Another client'});
 server.emit('error', new Error('Server error'));

@@ -6,7 +6,7 @@ function Animal(name) {
 }
 
 Animal.prototype.walk = function () {
-    console.log('Ходит ' + this.name);
+    console.log('Walk ' + this.name);
 };
 
 //Children
@@ -17,10 +17,10 @@ function Rabbit(name) {
 util.inherits(Rabbit, Animal);
 
 Rabbit.prototype.jump = function () {
-    console.log("Прыгает " + this.name)
+    console.log("Jump " + this.name)
 };
 
 //Usage
-var rabbit = new Rabbit("наш кролик");
+var rabbit = new Rabbit("Pumpkin");
 rabbit.walk();
 rabbit.jump();

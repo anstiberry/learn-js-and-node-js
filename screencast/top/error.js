@@ -1,8 +1,8 @@
 var util = require('util');
 
 var phrases = {
-    "Hello" : "Привет",
-    "world" : "мир"
+    "Hello" : "Привіт",
+    "world" : "світ"
 };
 
 
@@ -24,7 +24,7 @@ HttpError.prototype.name = 'HttpError';
 
 function getPhrase(name) {
     if (!phrases[name]) {
-        throw new PhraseError("Нет такой фразы: " + name);
+        throw new PhraseError("There is no such phrase: " + name);
     }
     return phrases[name];
 }
@@ -32,7 +32,7 @@ function getPhrase(name) {
 
 function makePage(url) {
     if (url !== 'index.html') {
-        throw new HttpError(400, "Нет такой страницы");
+        throw new HttpError(400, "There is no such page");
     }
     return util.format("%s, %s!", getPhrase("Hello"), getPhrase("world"));
 }
@@ -44,7 +44,7 @@ try {
     if (e instanceof HttpError) {
         console.log(e.status, e.message);
     } else {
-        console.error("Ошибка %s\n сообщение: %s\n стек: %s",
+        console.error("Error %s\n message: %s\n stack: %s",
             e.name, e.message, e.stack);
     }
 }
